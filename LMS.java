@@ -7,7 +7,7 @@ public class LMS
   static ArrayList<String> authors = new ArrayList<>();
   static ArrayList<Integer> totalQuantities = new ArrayList<>();
   static ArrayList<Integer> availableQuantities = new ArrayList<>();
-  static ArrayList<String> bookStatus = new ArrayList<>();
+  
   public static void main(String args[])
   {
     
