@@ -12,6 +12,10 @@ public class LMS
   static ArrayList<Integer> issueMemberIDs = new ArrayList<>();
   static ArrayList<String> issueDates = new ArrayList<>();
   static ArrayList<String> memberNames = new ArrayList<>();
+  static final String BOOKSDATAFILE = "books_data.txt";
+  static final String ISSUEDBOOKSDATAFILE = "issued_data.txt";
+  static final String MEMBERSDATAFILE = "members.txt";
+  static final String ROOMSDATAFILE = "rooms.txt";
   public static void main(String args[])
   {
     
