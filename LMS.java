@@ -16,6 +16,10 @@ public class LMS
   static final String ISSUEDBOOKSDATAFILE = "issued_data.txt";
   static final String MEMBERSDATAFILE = "members.txt";
   static final String ROOMSDATAFILE = "rooms.txt";
+  static final int ROOMCOUNT = 5;
+  static int[] roomNumbers = {101, 102, 103, 104, 105};
+  static String[] roomStatus = {"Available", "Available", "Available", "Available", "Available"};
+  static int[] reservedByMemberID = new int[ROOMCOUNT];
   public static void main(String args[])
   {
     
