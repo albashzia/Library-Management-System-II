@@ -21,6 +21,28 @@ public class LMS
   static String[] roomStatus = {"Available", "Available", "Available", "Available", "Available"};
   static int[] reservedByMemberID = new int[ROOMCOUNT];
 
+  public static void loadDataFromFiles() {
+        try {
+            File f = new File(BOOKSDATAFILE);
+            if (f.exists()) {
+                Scanner sc = new Scanner(f);
+                while (sc.hasNextLine()) {
+                    String line = sc.nextLine();
+                    String[] parts = line.split(",");
+                    bookIDs.add(Integer.parseInt(parts[0]));
+                    bookTitles.add(parts[1]);
+                    bookAuthors.add(parts[2]);
+                    totalQuantities.add(Integer.parseInt(parts[3]));
+                    availableQuantities.add(Integer.parseInt(parts[4]));
+                }
+                sc.close();
+            } else {
+                System.out.println("Books file not found. Starting fresh.");
+            }
+        } catch (Exception e) {
+            System.out.println("Error loading books data.");
+        }
+    }
   public static void main(String args[])
   {
     
