@@ -3,8 +3,8 @@ import java.io.*;
 public class LMS
 {
   static ArrayList<Integer> bookIDs = new ArrayList<>();
-  static ArrayList<String> titles = new ArrayList<>();
-  static ArrayList<String> authors = new ArrayList<>();
+  static ArrayList<String> bookTitles = new ArrayList<>();
+  static ArrayList<String> bookAuthors = new ArrayList<>();
   static ArrayList<Integer> totalQuantities = new ArrayList<>();
   static ArrayList<Integer> availableQuantities = new ArrayList<>();
   static ArrayList<Integer> memberIDs = new ArrayList<>();
@@ -61,6 +61,17 @@ public class LMS
         } catch (Exception e1) {
             System.out.println("Error loading issued data.");
         }
+    }
+
+    public static void displayMainMenu() {
+        System.out.println("\n=============================================");
+        System.out.println("             MAIN MENU");
+        System.out.println("=============================================");
+        System.out.println("1. Books Management");
+        System.out.println("2. Membership Management");
+        System.out.println("3. Study Room Management");
+        System.out.println("4. Exit System");
+        System.out.print("Enter your choice: ");
     }
   public static void main(String args[])
   {
