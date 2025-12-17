@@ -42,6 +42,25 @@ public class LMS
         } catch (Exception e) {
             System.out.println("Error loading books data.");
         }
+
+        try {
+            File f = new File(ISSUEDBOOKSDATAFILE);
+            if (f.exists()) {
+                Scanner sc = new Scanner(f);
+                while (sc.hasNextLine()) {
+                    String line = sc.nextLine();
+                    String[] parts = line.split(",");
+                    issueBookIDs.add(Integer.parseInt(parts[0]));
+                    issueMemberIDs.add(Integer.parseInt(parts[1]));
+                    issueDates.add(parts[2]);
+                }
+                sc.close();
+            } else {
+                System.out.println("Issued file not found.");
+            }
+        } catch (Exception e1) {
+            System.out.println("Error loading issued data.");
+        }
     }
   public static void main(String args[])
   {
