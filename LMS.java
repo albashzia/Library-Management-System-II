@@ -101,6 +101,21 @@ public class LMS
     loadDataFromFiles();
     displayMainMenu();
     int choice = 0;
-    
+    do {
+            displayMainMenu();
+            while (true) 
+                {
+                try 
+                {
+                    choice = input.nextInt();
+                    break;
+                } catch (InputMismatchException e9) 
+                {
+                    System.out.print("Invalid input. Please enter numbers only.\nTry again. \nEnter your choice: ");
+                    input.nextLine();
+                }
+            }
+            processMainMenuChoice(choice);
+        } while (choice != 4);
   }
 }
