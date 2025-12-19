@@ -73,9 +73,34 @@ public class LMS
         System.out.println("4. Exit System");
         System.out.print("Enter your choice: ");
     }
+
+    public static void processMainMenuChoice(int choice) {
+        try {
+            switch (choice) {
+                case 1:
+                    //bookMenu();
+                    break;
+                case 2:
+                    //memberMenu();
+                    break;
+                case 3:
+                    //roomMenu();
+                    break;
+                case 4:
+                    System.out.println("Exiting System...");
+                    break;
+                default:
+                    System.out.println("Invalid choice.. Try Again");
+            }
+        } catch (Exception e10) {
+            System.out.println(e10.toString());
+        }
+    }
   public static void main(String args[])
   {
     loadDataFromFiles();
     displayMainMenu();
+    int choice = 0;
+    
   }
 }
