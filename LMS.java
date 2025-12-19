@@ -96,6 +96,13 @@ public class LMS
             System.out.println(e10.toString());
         }
     }
+
+    /*
+     * main() method
+     * Entry point of the Library Management System.
+     * Displays the main menu repeatedly until user chooses to exit.
+     * Handles input validation for menu choices.
+     */
   public static void main(String args[])
   {
     loadDataFromFiles();
