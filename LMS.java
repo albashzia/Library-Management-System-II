@@ -1,28 +1,28 @@
 import java.util.*;
 import java.io.*;
-public class LMS
-{
-  static Scanner input = new Scanner(System.in);
-  static ArrayList<Integer> bookIDs = new ArrayList<>();
-  static ArrayList<String> bookTitles = new ArrayList<>();
-  static ArrayList<String> bookAuthors = new ArrayList<>();
-  static ArrayList<Integer> totalQuantities = new ArrayList<>();
-  static ArrayList<Integer> availableQuantities = new ArrayList<>();
-  static ArrayList<Integer> memberIDs = new ArrayList<>();
-  static ArrayList<Integer> issueBookIDs = new ArrayList<>();
-  static ArrayList<Integer> issueMemberIDs = new ArrayList<>();
-  static ArrayList<String> issueDates = new ArrayList<>();
-  static ArrayList<String> memberNames = new ArrayList<>();
-  static String BOOKSDATAFILE = "books_data.txt";
-  static String ISSUEDBOOKSDATAFILE = "issued_data.txt";
-  static String MEMBERSDATAFILE = "members.txt";
-  static String ROOMSDATAFILE = "rooms.txt";
-  static int ROOMCOUNT = 5;
-  static int[] roomNumbers = {101, 102, 103, 104, 105};
-  static String[] roomStatus = {"Available", "Available", "Available", "Available", "Available"};
-  static int[] reservedByMemberID = new int[ROOMCOUNT];
 
-  public static void loadDataFromFiles() {
+public class LMS {
+    static Scanner input = new Scanner(System.in);
+    static ArrayList<Integer> bookIDs = new ArrayList<>();
+    static ArrayList<String> bookTitles = new ArrayList<>();
+    static ArrayList<String> bookAuthors = new ArrayList<>();
+    static ArrayList<Integer> totalQuantities = new ArrayList<>();
+    static ArrayList<Integer> availableQuantities = new ArrayList<>();
+    static ArrayList<Integer> memberIDs = new ArrayList<>();
+    static ArrayList<Integer> issueBookIDs = new ArrayList<>();
+    static ArrayList<Integer> issueMemberIDs = new ArrayList<>();
+    static ArrayList<String> issueDates = new ArrayList<>();
+    static ArrayList<String> memberNames = new ArrayList<>();
+    static String BOOKSDATAFILE = "books_data.txt";
+    static String ISSUEDBOOKSDATAFILE = "issued_data.txt";
+    static String MEMBERSDATAFILE = "members.txt";
+    static String ROOMSDATAFILE = "rooms.txt";
+    static int ROOMCOUNT = 5;
+    static int[] roomNumbers = { 101, 102, 103, 104, 105 };
+    static String[] roomStatus = { "Available", "Available", "Available", "Available", "Available" };
+    static int[] reservedByMemberID = new int[ROOMCOUNT];
+
+    public static void loadDataFromFiles() {
         try {
             File f = new File(BOOKSDATAFILE);
             if (f.exists()) {
@@ -90,31 +90,32 @@ public class LMS
             }
             switch (choice) {
                 case 1:
-                    //addBook();
+                    // addBook();
                     break;
                 case 2:
-                    //removeBook();
+                    // removeBook();
                     break;
                 case 3:
-                    //searchBook();
+                    // searchBook();
                     break;
                 case 4:
-                    //displayAvailableBooks();
+                    // displayAvailableBooks();
                     break;
                 case 5:
-                    //issueBook();
+                    // issueBook();
                     break;
                 case 6:
-                    //returnBook();
+                    // returnBook();
                     break;
                 case 7:
-                    //showAllIssuedBooks();
+                    // showAllIssuedBooks();
                     break;
                 default:
                     System.out.println("Invalid Choice, please enter value from 1 - 8 ");
             }
         } while (choice != 8);
     }
+
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
         System.out.println("             MAIN MENU");
@@ -133,10 +134,10 @@ public class LMS
                     bookMenu();
                     break;
                 case 2:
-                    //memberMenu();
+                    // memberMenu();
                     break;
                 case 3:
-                    //roomMenu();
+                    // roomMenu();
                     break;
                 case 4:
                     System.out.println("Exiting System...");
@@ -155,26 +156,22 @@ public class LMS
      * Displays the main menu repeatedly until user chooses to exit.
      * Handles input validation for menu choices.
      */
-  public static void main(String args[])
-  {
-    loadDataFromFiles();
-    displayMainMenu();
-    int choice = 0;
-    do {
+    public static void main(String args[]) {
+        loadDataFromFiles();
+        displayMainMenu();
+        int choice = 0;
+        do {
             displayMainMenu();
-            while (true) 
-                {
-                try 
-                {
+            while (true) {
+                try {
                     choice = input.nextInt();
                     break;
-                } catch (InputMismatchException e9) 
-                {
+                } catch (InputMismatchException e9) {
                     System.out.print("Invalid input. Please enter numbers only.\nTry again. \nEnter your choice: ");
                     input.nextLine();
                 }
             }
             processMainMenuChoice(choice);
         } while (choice != 4);
-  }
+    }
 }
