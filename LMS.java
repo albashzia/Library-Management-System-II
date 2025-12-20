@@ -2,6 +2,7 @@ import java.util.*;
 import java.io.*;
 public class LMS
 {
+  static Scanner input = new Scanner(System.in);
   static ArrayList<Integer> bookIDs = new ArrayList<>();
   static ArrayList<String> bookTitles = new ArrayList<>();
   static ArrayList<String> bookAuthors = new ArrayList<>();
@@ -63,6 +64,57 @@ public class LMS
         }
     }
 
+    public static void bookMenu() {
+        int choice = 0;
+        do {
+            System.out.println("\n=============================================");
+            System.out.println("           BOOKS MANAGEMENT MENU");
+            System.out.println("=============================================");
+            System.out.println("1. Add a new book");
+            System.out.println("2. Remove a book");
+            System.out.println("3. Search book by ID or Author");
+            System.out.println("4. Display all available books");
+            System.out.println("5. Issue a book");
+            System.out.println("6. Return a book");
+            System.out.println("7. Show all issued books");
+            System.out.println("8. Back to Main Menu");
+            System.out.print("Enter choice: ");
+            while (true) {
+                try {
+                    choice = input.nextInt();
+                    break;
+                } catch (InputMismatchException e11) {
+                    System.out.println("Invalid input. Please enter numbers only.");
+                    input.nextLine();
+                }
+            }
+            switch (choice) {
+                case 1:
+                    //addBook();
+                    break;
+                case 2:
+                    //removeBook();
+                    break;
+                case 3:
+                    //searchBook();
+                    break;
+                case 4:
+                    //displayAvailableBooks();
+                    break;
+                case 5:
+                    //issueBook();
+                    break;
+                case 6:
+                    //returnBook();
+                    break;
+                case 7:
+                    //showAllIssuedBooks();
+                    break;
+                default:
+                    System.out.println("Invalid Choice, please enter value from 1 - 8 ");
+            }
+        } while (choice != 8);
+    }
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
         System.out.println("             MAIN MENU");
