@@ -130,7 +130,7 @@ public class LMS
         try {
             switch (choice) {
                 case 1:
-                    //bookMenu();
+                    bookMenu();
                     break;
                 case 2:
                     //memberMenu();
