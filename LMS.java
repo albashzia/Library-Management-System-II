@@ -115,7 +115,12 @@ public class LMS {
             }
         } while (choice != 8);
     }
-    
+    /*
+     * addBook()
+     * Adds a new book to the library.
+     * Prompts for book ID, title, author, and total quantity.
+     * Validates numeric inputs and handles exceptions for invalid entries.
+     */
     public static void addBook() {
         System.out.println("\n---------------------------------------------");
         System.out.println("              ADD NEW BOOK");
