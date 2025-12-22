@@ -237,6 +237,68 @@ public class LMS {
         }
         saveDataToFiles();
     }
+    public static void searchBook() {
+        System.out.println("\n---------------------------------------------");
+        System.out.println("               SEARCH BOOK");
+        System.out.println("---------------------------------------------");
+
+        System.out.println("Search by : \n(1) ID \n(2) Author ");
+        int choice;
+        while (true) {
+            try {
+                choice = input.nextInt();
+                break;
+            } catch (InputMismatchException e19) {
+                System.out.println("Invalid option. Enter numbers only.");
+                input.nextLine();
+            }
+        }
+
+        if (choice == 1) {
+            System.out.print("Enter book ID: ");
+            int id;
+            while (true) {
+                try {
+                    id = input.nextInt();
+                    break;
+                } catch (InputMismatchException e20) {
+                    System.out.println("Invalid Book ID. Enter numbers only.");
+                    input.nextLine();
+                }
+            }
+            input.nextLine();
+            int index = findBookIndexByID(id);
+            if (index != -1) {
+                printBookDetails(index);
+            } else {
+                System.out.println("Book not found");
+            }
+        } else if (choice == 2) {
+
+            input.nextLine();
+            String authorName;
+            while (true) {
+                System.out.print("Enter Author Name: ");
+                authorName = input.nextLine().trim().toLowerCase();
+                if (!containsLetter(authorName)) {
+                    System.out.println("Invalid input! Author name must contain alphabets. Try again.");
+                    continue;
+                }
+                break;
+            }
+            boolean found = false;
+            for (int i = 0; i < bookAuthors.size(); i++) {
+                String storedAuthor = bookAuthors.get(i).toLowerCase();
+                if (storedAuthor.contains(authorName)) {
+                    printBookDetails(i);
+                    found = true;
+                }
+            }
+            if (!found) {
+                System.out.println("No Books found by that author");
+            }
+        }
+    }
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
         System.out.println("             MAIN MENU");
