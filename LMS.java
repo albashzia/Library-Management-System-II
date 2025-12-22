@@ -115,7 +115,86 @@ public class LMS {
             }
         } while (choice != 8);
     }
-
+    
+    public static void addBook() {
+        System.out.println("\n---------------------------------------------");
+        System.out.println("              ADD NEW BOOK");
+        System.out.println("---------------------------------------------\n");
+        try {
+            System.out.print("Enter new Book ID : ");
+            int id;
+            while (true) {
+                try {
+                    id = input.nextInt();
+                    break;
+                } catch (InputMismatchException e12) {
+                    System.out.println("Invalid Book ID. Enter numbers only.");
+                    input.nextLine();
+                }
+            }
+            if (findBookIndexByID(id) != -1) {
+                System.out.println("Book ID already exists. Please enter a unique ID.");
+                return;
+            }
+            input.nextLine();
+            bookIDs.add(id);
+            System.out.print("Enter the title : ");
+            String title;
+            while (true) {
+                try {
+                    title = input.nextLine().trim();
+                } catch (Exception e13) {
+                    System.out.println("Error reading title. Please enter again: ");
+                    input.nextLine();
+                    title = input.nextLine().trim();
+                }
+                if (!containsLetter(title)) {
+                    System.out.println("Title must contain at least one alphabet. Enter again:");
+                    continue;
+                }
+                break;
+            }
+            bookTitles.add(title);
+            System.out.print("Enter the author : ");
+            String author;
+            while (true) {
+                try {
+                    author = input.nextLine().trim();
+                } catch (Exception e14) {
+                    System.out.println("Error reading author. Please enter again: ");
+                    input.nextLine();
+                    author = input.nextLine().trim();
+                }
+                if (!containsLetter(author)) {
+                    System.out.println("Author name must contain at least one alphabet. Enter again:");
+                    continue;
+                }
+                break;
+            }
+            bookAuthors.add(author);
+            System.out.print("Enter total quantity : ");
+            int total;
+            while (true) {
+                try {
+                    total = input.nextInt();
+                    if (total < 0) {
+                        System.out.println("Quantity cannot be negative.");
+                        continue;
+                    }
+                    break;
+                } catch (InputMismatchException e15) {
+                    System.out.println("Invalid quantity. Enter numbers only.");
+                    input.nextLine();
+                }
+            }
+            totalQuantities.add(total);
+            availableQuantities.add(total);
+            System.out.println("Book '" + title + "' added successfully.");
+            saveDataToFiles();
+        } catch (Exception e16) {
+            System.out.println("Unexpected error occurred while adding the book: " + e16.getMessage());
+        }
+    }
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
         System.out.println("             MAIN MENU");
