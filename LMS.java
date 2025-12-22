@@ -200,6 +200,13 @@ public class LMS {
             System.out.println("Unexpected error occurred while adding the book: " + e16.getMessage());
         }
     }
+    /*
+     * removeBook()
+     * Removes a book from the library.
+     * Prompts for book ID.
+     * Checks if the book exists and all copies are available before removal.
+     * Handles exceptions during data removal.
+     */
     public static void removeBook() {
         System.out.println("\n---------------------------------------------");
         System.out.println("               REMOVE BOOK");
