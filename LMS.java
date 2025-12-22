@@ -200,6 +200,43 @@ public class LMS {
             System.out.println("Unexpected error occurred while adding the book: " + e16.getMessage());
         }
     }
+    public static void removeBook() {
+        System.out.println("\n---------------------------------------------");
+        System.out.println("               REMOVE BOOK");
+        System.out.println("---------------------------------------------\n");
+
+        System.out.print("Enter book ID to remove : ");
+        int id;
+        while (true) {
+            try {
+                id = input.nextInt();
+                break;
+            } catch (InputMismatchException e17) {
+                System.out.println("Invalid Book ID. Enter numbers only.");
+                input.nextLine();
+            }
+        }
+        input.nextLine();
+        int index = findBookIndexByID(id);
+        if (index == -1) {
+            System.out.println("Book ID not found.");
+            return;
+        }
+        if (availableQuantities.get(index) != totalQuantities.get(index)) {
+            System.out.println("Cannot remove this book. Some copies are issued.");
+            return;
+        }
+        try {
+            bookIDs.remove(index);
+            bookTitles.remove(index);
+            bookAuthors.remove(index);
+            totalQuantities.remove(index);
+            availableQuantities.remove(index);
+        } catch (IndexOutOfBoundsException e18) {
+            System.out.println("Error removing book data. Data corrupted.");
+        }
+        saveDataToFiles();
+    }
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
         System.out.println("             MAIN MENU");
