@@ -244,6 +244,13 @@ public class LMS {
         }
         saveDataToFiles();
     }
+    /*
+     * searchBook()
+     * Allows user to search for books by ID or Author.
+     * For ID search, displays details if found.
+     * For Author search, displays all books by the given author.
+     * Handles invalid input and exceptions.
+     */
     public static void searchBook() {
         System.out.println("\n---------------------------------------------");
         System.out.println("               SEARCH BOOK");
