@@ -314,6 +314,12 @@ public class LMS {
         }
     }
 
+    /*
+     * displayAvailableBooks()
+     * Displays all books currently available for issuing.
+     * Handles exceptions when reading quantities or book details.
+     */
+    
     public static void displayAvailableBooks() {
         System.out.println("\n==============================================================================");
         System.out.println("                               AVAILABLE BOOKS");
@@ -341,7 +347,7 @@ public class LMS {
             System.out.println("No books currently available.");
         }
     }
-    
+
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
         System.out.println("             MAIN MENU");
