@@ -313,6 +313,35 @@ public class LMS {
             }
         }
     }
+
+    public static void displayAvailableBooks() {
+        System.out.println("\n==============================================================================");
+        System.out.println("                               AVAILABLE BOOKS");
+        System.out.println("==============================================================================");
+
+        System.out.printf("%-10s | %-30s | %-20s | %-10s%n",
+                "ID", "Title", "Author", "Available");
+        System.out.println("--------------------------------------------------------------------------------");
+        boolean any = false;
+        for (int i = 0; i < bookIDs.size(); i++) {
+            try {
+                if (availableQuantities.get(i) > 0) {
+                    System.out.printf("%-10d | %-30s | %-20s | %-10d%n",
+                            bookIDs.get(i),
+                            bookTitles.get(i),
+                            bookAuthors.get(i),
+                            availableQuantities.get(i));
+                    any = true;
+                }
+            } catch (Exception e22) {
+                System.out.println("Error reading available book quantities.");
+            }
+        }
+        if (!any) {
+            System.out.println("No books currently available.");
+        }
+    }
+    
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
         System.out.println("             MAIN MENU");
