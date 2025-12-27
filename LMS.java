@@ -401,6 +401,57 @@ public class LMS {
         } // while
     }// memberMenu
 
+    public static void registerNewMember() {
+        System.out.println("\n---------------------------------------------");
+        System.out.println("           REGISTER NEW MEMBER");
+        System.out.println("---------------------------------------------\n");
+
+        int ID;
+        while (true) {
+            try {
+                System.out.println("Enter ID of the new member (recommended 4 digit) or 0 to cancel:");
+                if (!input.hasNextInt()) {
+                    System.out.println("Member ID must be numeric..Try again");
+                    input.nextLine();
+                    continue;
+                }
+                ID = input.nextInt();
+                input.nextLine();
+                if (ID == 0) {
+                    System.out.println("Registration cancelled.");
+                    return;
+                }
+                if (ID < 1000 || ID > 9999) {
+                    System.out.println("You have entered an invalid ID. Use a 4-digit ID between 1000 and 9999.");
+                    continue;
+                }
+                if (findMemberIndexByID(ID) != -1) {
+                    System.out.println("Member ID already exists.");
+                    continue;
+                }
+                break;
+            } catch (Exception e41) {
+                System.out.println("Unexpected error: " + e41.getMessage());
+                input.nextLine();
+            }
+        }
+        String name;
+        while (true) {
+            System.out.println("Enter the name of the member: ");
+            name = input.nextLine().trim();
+            if (name.isEmpty()) {
+                System.out.println("Name cannot be empty. Please enter a valid name.");
+                continue;
+            }
+            break;
+        }
+        memberIDs.add(ID);
+        memberNames.add(name);
+        System.out.println("Member " + name + " has been registered with ID: " + ID);
+        saveMembersToFile();
+    }// registerNewMember
+
+
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
         System.out.println("             MAIN MENU");
