@@ -348,6 +348,59 @@ public class LMS {
         }
     }
 
+    public static void memberMenu() {
+        int choice;
+        while (true) {
+            System.out.println("\n=============================================");
+            System.out.println("          MEMBERSHIP MANAGEMENT");
+            System.out.println("=============================================");
+            System.out.println("1. Register a new member");
+            System.out.println("2. Display all members");
+            System.out.println("3. Search a member by ID or by Name");
+            System.out.println("4. View Books issued by a member");
+            System.out.println("5. Remove a member");
+            System.out.println("6. Back to the Main Menu");
+            System.out.print("Enter your choice: ");
+            try {
+                choice = input.nextInt();
+                input.nextLine();
+            } catch (InputMismatchException e39) {
+                System.out.println("You have entered an invalid choice!!");
+                System.out.println("Try again");
+                input.nextLine();
+                continue;
+            } // catch
+            try {
+                switch (choice) {
+                    case 1:
+                        //registerNewMember();
+                        break;
+                    case 2:
+                        //displayAllMembers();
+                        break;
+                    case 3:
+                        //searchMember();
+                        break;
+                    case 4:
+                        //viewBooksIssuedByMember();
+                        break;
+                    case 5:
+                        //removeMember();
+                        break;
+                    case 6:
+                        System.out.println("Returning to main menu..");
+                        return;
+                    default:
+                        System.out.println("Invalid choice");
+
+                }// switch
+            } // try
+            catch (Exception e40) {
+                System.out.println("Unexpected Error: " + e40.getMessage());
+            } // catch
+        } // while
+    }// memberMenu
+
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
         System.out.println("             MAIN MENU");
