@@ -451,6 +451,67 @@ public class LMS {
         saveMembersToFile();
     }// registerNewMember
 
+    public static void searchMember() {
+        System.out.println("\n---------------------------------------------");
+        System.out.println("               SEARCH MEMBER");
+        System.out.println("---------------------------------------------");
+
+        while (true) {
+            try {
+                System.out.println("Search a member by \n 1.ID \n 2.Name \n 3.Cancel Search");
+                String searchInput = input.nextLine().trim();
+                int search;
+                try {
+                    search = Integer.parseInt(searchInput);
+                } catch (NumberFormatException e42) {
+                    System.out.println("Invalid input. Please enter a number (1, 2, or 3).");
+                    continue;
+                }
+                if (search == 1) {
+                    System.out.print("Enter the ID of the member: ");
+                    if (!input.hasNextInt()) {
+                        System.out.println("Invalid input. ID must be a number.");
+                        input.nextLine();
+                        continue;
+                    }
+                    int ID = input.nextInt();
+                    input.nextLine();
+                    int index = findMemberIndexByID(ID);
+                    if (index != -1) {
+                        System.out.println(
+                                "\n Found member ID " + memberIDs.get(index) + " Name: " + memberNames.get(index));
+                    } else {
+                        System.out.println("Member ID not found");
+                    }
+                    break;
+                } else if (search == 2) {
+                    System.out.print("Enter the name of the member: ");
+                    String name = input.nextLine().trim();
+                    System.out.println("Searching member with name : " + name);
+                    boolean found = false;
+                    for (int i = 0; i < memberIDs.size(); i++) {
+                        if (memberNames.get(i).equalsIgnoreCase(name)) {
+                            System.out.println("Member Found");
+                            System.out.println("Id: " + memberIDs.get(i) + ", Name: " + memberNames.get(i));
+                            found = true;
+                        }
+                    } // for
+                    if (!found) {
+                        System.out.println("No member found");
+                    }
+                    break;
+                } else if (search == 3) {
+                    System.out.println("Search cancelled");
+                    break;
+                } else {
+                    System.out.println("Invalid Option. Please choose 1, 2, or 3.");
+                }
+            } catch (InputMismatchException e43) {
+                System.out.println("Invalid input.. Try Again");
+                input.nextLine();
+            }
+        } // while
+    }// searchMember
 
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
