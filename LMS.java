@@ -64,6 +64,15 @@ public class LMS {
         }
     }
 
+    public static int findMemberIndexByID(int id) {
+        for (int i = 0; i < memberIDs.size(); i++) {
+            if (memberIDs.get(i) == id) {
+                return i;
+            }
+        } // for
+        return -1;
+    }// find member by ID
+    
     public static void bookMenu() {
         int choice = 0;
         do {
