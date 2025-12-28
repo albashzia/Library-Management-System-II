@@ -549,7 +549,7 @@ public class LMS {
                     bookMenu();
                     break;
                 case 2:
-                    // memberMenu();
+                    memberMenu();
                     break;
                 case 3:
                     // roomMenu();
