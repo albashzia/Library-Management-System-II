@@ -531,6 +531,44 @@ public class LMS {
         } // while
     }// searchMember
 
+    public static void displayAllMembers() {
+        System.out.println("--Displaying All Members--");
+        if (memberIDs.isEmpty()) {
+            System.out.println("No members registered");
+            return;
+        }
+        boolean success = false;
+        do {
+            success = true;
+            try {
+                System.out.println("\n=============================================");
+                System.out.println("              ALL REGISTERED MEMBERS");
+                System.out.println("=============================================\n");
+
+                System.out.printf("%-15s | %-30s%n", "Member ID", "Name");
+                System.out.println("-------------------------------------");
+                for (int i = 0; i < memberIDs.size(); i++) {
+                    System.out.printf("%-15d | %-30s%n", memberIDs.get(i), memberNames.get(i));
+                } // for
+            } catch (Exception e44) {
+                System.out.println("Error: " + e44.getMessage());
+                success = false;
+            }
+            if (!success) {
+                System.out.println("Display failed");
+                System.out.print("Do you want to try again? (Type 'y' to retry or 'n' to exit): ");
+                String response = input.nextLine();
+                if (!response.trim().equalsIgnoreCase("y")) {
+                    System.out.println("Display attempt aborted by user.");
+                    break;
+                }
+            }
+        } while (!success);
+        if (success) {
+            System.out.println("\nDisplay process completed successfully.");
+        }
+    }// displayAll
+    
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
         System.out.println("             MAIN MENU");
