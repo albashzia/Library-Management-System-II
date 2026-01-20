@@ -568,6 +568,67 @@ public class LMS {
             System.out.println("\nDisplay process completed successfully.");
         }
     }// displayAll
+
+
+    public static void viewBooksIssuedByMember() {
+        System.out.println("\n---------------------------------------------");
+        System.out.println("        BOOKS ISSUED TO A MEMBER");
+        System.out.println("---------------------------------------------\n");
+
+        while (true) {
+            try {
+                System.out.print("Enter ID of the member (or enter 0 to exit): ");
+                if (!input.hasNextInt()) {
+                    System.out.println("Invalid input.. Enter integer as an ID.");
+                    input.nextLine();
+                    continue;
+                }
+                int id = input.nextInt();
+                input.nextLine();
+                if (id == 0) {
+                    System.out.println("Operation cancelled!");
+                    break;
+                }
+                int index = findMemberIndexByID(id);
+                if (index == -1) {
+                    System.out.println("Member ID not found");
+                    continue;
+                }
+                System.out.println("\nBooks issued to " + memberNames.get(index) + " (ID: " + id + ")");
+                System.out.printf("%-15s | %-30s | %-20s%n", "Book ID", "Title", "Issue Date");
+                boolean found = false;
+                for (int i = 0; i < issueBookIDs.size(); i++) {
+                    if (issueMemberIDs.get(i) == id) {
+                        int bookIndex = findBookIndexByID(issueBookIDs.get(i));
+                        String title;
+                        if (bookIndex == -1 || bookIndex >= bookTitles.size() || bookTitles.get(bookIndex) == null) {
+                            title = "UNKNOWN BOOK";
+                        } else {
+                            title = bookTitles.get(bookIndex);
+                        }
+
+                        System.out.printf("%-10d | %-30s | %-15s%n", issueBookIDs.get(i), title, issueDates.get(i));
+                        found = true;
+                    }
+                }
+                if (!found) {
+                    System.out.println("\nThis member having ID (" + id + ") has no issued books.");
+                }
+
+                System.out.println("\nView operation completed successfully.");
+                return;
+            } catch (Exception e45) {
+                System.out.println("Unexpected error: " + e45.getMessage());
+                System.out.print("Do you want to try again? (Enter 'y' for yes and 'n' for no): ");
+                String answer = input.nextLine();
+                if (!answer.trim().equalsIgnoreCase("y")) {
+                    System.out.println("Operation Cancelled");
+                    break;
+                }
+            } // catch
+        } // while
+    }// BooksIssuedToMember
+
     
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
