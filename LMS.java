@@ -629,6 +629,55 @@ public class LMS {
         } // while
     }// BooksIssuedToMember
 
+    public static void removeMember() {
+        System.out.println("\n---------------------------------------------");
+        System.out.println("               REMOVE MEMBER");
+        System.out.println("---------------------------------------------");
+
+        while (true) {
+            try {
+                System.out.print("Enter Member ID(4 digit) to remove (or 0 to cancel): ");
+                if (!input.hasNextInt()) {
+                    System.out.println("Invalid input. Please enter a numeric ID.");
+                    input.nextLine();
+                    continue;
+                }
+                int id = input.nextInt();
+                input.nextLine();
+                if (id == 0) {
+                    System.out.println("Operation cancelled.");
+                    break;
+                }
+                int index = findMemberIndexByID(id);
+                if (index == -1) {
+                    System.out.println("Member ID not found. Try again.");
+                    continue;
+                }
+                boolean hasIssues = false;
+                for (int i = 0; i < issueBookIDs.size(); i++) {
+                    if (issueMemberIDs.get(i) == id) {
+                        hasIssues = true;
+                        break;
+                    }
+                }
+                if (hasIssues) {
+                    System.out.println("Cannot remove member: outstanding books must be returned first.");
+                    continue;
+                }
+                memberIDs.remove(index);
+                memberNames.remove(index);
+                saveMembersToFile();
+                System.out.println("Member ID " + id + " removed successfully.");
+                break;
+            } catch (InputMismatchException e46) {
+                System.out.println("\nInput Error: Member ID must be a numeric integer.");
+                input.nextLine();
+            } catch (Exception e47) {
+                System.out.println("Unexpected error: " + e47.getMessage());
+            }
+        } // while
+    }// remove member
+
     
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
