@@ -817,6 +817,74 @@ public class LMS {
 
     }
 
+    public static void cancelReservation() {
+        System.out.println("\n---------------------------------------------");
+        System.out.println("             CANCEL RESERVATION");
+        System.out.println("---------------------------------------------");
+
+        int memberId = 0;
+        int cancelRoom = 0;
+        int index = -1;
+        while (true) {
+            try {
+
+                System.out.println("Enter a room to cancel reservation");
+                cancelRoom = input.nextInt();
+
+                index = -1;
+                for (int i = 0; i < roomNumbers.length; i++) {
+
+                    if (roomNumbers[i] == cancelRoom) {
+                        index = i;
+
+                        break;
+
+                    }
+                }
+
+                if (index == -1) {
+                    System.out.println("Room number not found");
+                    continue;
+
+                }
+                break;
+            } catch (InputMismatchException e51) {
+                System.out.println("Invalid Input ! Enter a number.");
+
+                input.nextLine();
+            }
+        }
+        while (true) {
+            try {
+
+                System.out.println("Enter Member ID to cancel Reservation");
+                memberId = input.nextInt();
+                int memberIndex = findMemberIndexByID(memberId);
+                if (memberIndex == -1) {
+                    System.out.println("Member doesnot exist");
+                    continue;
+                }
+
+                break;
+
+            } catch (InputMismatchException e52) {
+                System.out.println("Invalid input ! Enter a number for member ID");
+                input.nextLine();
+            } // end catch
+        }
+        if (roomStatus[index].equals("Available")) {
+            System.out.println("The room" + cancelRoom + "is already available. No need to cancel it.");
+        } else if (reservedByMemberID[index] != memberId) {
+            System.out.println("The room was reserved by different member");
+        } else {
+            roomStatus[index] = "Available";
+
+            reservedByMemberID[index] = 0;
+            saveRoomData();
+            System.out.println("Reservation for room " + cancelRoom + " cancelled!");
+
+        }
+    }
     
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
