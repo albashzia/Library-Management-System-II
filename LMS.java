@@ -213,7 +213,7 @@ public class LMS {
             totalQuantities.add(total);
             availableQuantities.add(total);
             System.out.println("Book '" + title + "' added successfully.");
-            saveDataToFiles();
+            //saveDataToFiles();
         } catch (Exception e16) {
             System.out.println("Unexpected error occurred while adding the book: " + e16.getMessage());
         }
@@ -678,7 +678,56 @@ public class LMS {
         } // while
     }// remove member
 
-    
+    public static void roomMenu() {
+        int choice = 0;
+        do {
+            while (true) {
+                System.out.println("\n=============================================");
+                System.out.println("          STUDY ROOM MANAGEMENT");
+                System.out.println("=============================================");
+                System.out.println("  1. Show Available Study Rooms");
+                System.out.println("  2. Reserve A Study Room");
+                System.out.println("  3. Cancel Reservation");
+                System.out.println("  4. Check Reservation Status");
+                System.out.println("  5. Back to main menu");
+                System.out.println();
+                System.out.print("Enter your choice: ");
+                try {
+                    choice = input.nextInt();
+                    if (choice < 1 || choice > 5) {
+                        System.out.println("Invalid choice please enter a number between 1-5");
+                        continue;
+                    } // end if
+                    break;
+                } // try
+                catch (InputMismatchException e48) {
+                    System.out.println("Invalid input! Please enter a number");
+                    System.out.println("Try again");
+                    input.nextLine();
+                    continue;
+                } // end catch
+            }
+            switch (choice) {
+                case 1:
+                    //showRoom();
+                    break;
+                case 2:
+                    //reserveRoom();
+                    break;
+                case 3:
+                    //cancelReservation();
+                    break;
+                case 4:
+                    //checkReservationStatus();
+                    break;
+                case 5:
+                    System.out.println("Exiting Study Room Booking System...");
+                    break;
+            }
+        } while (choice != 5);
+    }
+
+
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
         System.out.println("             MAIN MENU");
