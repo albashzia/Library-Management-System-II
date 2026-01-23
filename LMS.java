@@ -666,7 +666,7 @@ public class LMS {
                 }
                 memberIDs.remove(index);
                 memberNames.remove(index);
-                saveMembersToFile();
+                //saveMembersToFile();
                 System.out.println("Member ID " + id + " removed successfully.");
                 break;
             } catch (InputMismatchException e46) {
@@ -727,6 +727,23 @@ public class LMS {
         } while (choice != 5);
     }
 
+    public static void showRoom() {
+        System.out.println("\n=============================================");
+        System.out.println("            STUDY ROOM AVAILABILITY");
+        System.out.println("=============================================");
+
+        System.out.printf("%-12s | %-12s | %-12s\n", "Room Number", "Status", "Reserved By ");
+        System.out.println("==========================================");
+
+        for (int i = 0; i < roomNumbers.length; i++) {
+
+            String memberIdDisplay = (reservedByMemberID[i] == 0) ? "N/A" : String.valueOf(reservedByMemberID[i]);
+            System.out.printf("%-12d | %-12s | %-12s\n",
+                    roomNumbers[i],
+                    roomStatus[i],
+                    memberIdDisplay);
+        }
+    }
 
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
