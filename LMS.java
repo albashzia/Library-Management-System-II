@@ -72,7 +72,7 @@ public class LMS {
         }
         return -1;
     }
-    
+
     public static int findMemberIndexByID(int id) {
         for (int i = 0; i < memberIDs.size(); i++) {
             if (memberIDs.get(i) == id) {
@@ -133,6 +133,7 @@ public class LMS {
             }
         } while (choice != 8);
     }
+
     /*
      * addBook()
      * Adds a new book to the library.
@@ -213,11 +214,12 @@ public class LMS {
             totalQuantities.add(total);
             availableQuantities.add(total);
             System.out.println("Book '" + title + "' added successfully.");
-            //saveDataToFiles();
+            // saveDataToFiles();
         } catch (Exception e16) {
             System.out.println("Unexpected error occurred while adding the book: " + e16.getMessage());
         }
     }
+
     /*
      * removeBook()
      * Removes a book from the library.
@@ -262,6 +264,7 @@ public class LMS {
         }
         saveDataToFiles();
     }
+
     /*
      * searchBook()
      * Allows user to search for books by ID or Author.
@@ -337,7 +340,7 @@ public class LMS {
      * Displays all books currently available for issuing.
      * Handles exceptions when reading quantities or book details.
      */
-    
+
     public static void displayAvailableBooks() {
         System.out.println("\n==============================================================================");
         System.out.println("                               AVAILABLE BOOKS");
@@ -391,19 +394,19 @@ public class LMS {
             try {
                 switch (choice) {
                     case 1:
-                        //registerNewMember();
+                        // registerNewMember();
                         break;
                     case 2:
-                        //displayAllMembers();
+                        // displayAllMembers();
                         break;
                     case 3:
-                        //searchMember();
+                        // searchMember();
                         break;
                     case 4:
-                        //viewBooksIssuedByMember();
+                        // viewBooksIssuedByMember();
                         break;
                     case 5:
-                        //removeMember();
+                        // removeMember();
                         break;
                     case 6:
                         System.out.println("Returning to main menu..");
@@ -569,7 +572,6 @@ public class LMS {
         }
     }// displayAll
 
-
     public static void viewBooksIssuedByMember() {
         System.out.println("\n---------------------------------------------");
         System.out.println("        BOOKS ISSUED TO A MEMBER");
@@ -666,7 +668,7 @@ public class LMS {
                 }
                 memberIDs.remove(index);
                 memberNames.remove(index);
-                //saveMembersToFile();
+                // saveMembersToFile();
                 System.out.println("Member ID " + id + " removed successfully.");
                 break;
             } catch (InputMismatchException e46) {
@@ -709,16 +711,16 @@ public class LMS {
             }
             switch (choice) {
                 case 1:
-                    //showRoom();
+                    // showRoom();
                     break;
                 case 2:
-                    //reserveRoom();
+                    // reserveRoom();
                     break;
                 case 3:
-                    //cancelReservation();
+                    // cancelReservation();
                     break;
                 case 4:
-                    //checkReservationStatus();
+                    // checkReservationStatus();
                     break;
                 case 5:
                     System.out.println("Exiting Study Room Booking System...");
@@ -885,7 +887,53 @@ public class LMS {
 
         }
     }
-    
+
+    public static void checkReservationStatus() {
+        System.out.println("\n---------------------------------------------");
+        System.out.println("              ROOM STATUS");
+        System.out.println("---------------------------------------------\n");
+
+        int RoomNum = 0;
+        while (true) {
+            try {
+
+                System.out.println("Enter room number to check status");
+                RoomNum = input.nextInt();
+                boolean roomExists = false;
+                for (int r : roomNumbers) {
+                    if (r == RoomNum) {
+                        roomExists = true;
+                        break;
+                    }
+                }
+                if (!roomExists) {
+                    System.out.println("The room number doesnot exist");
+                    continue;
+                }
+                break;
+            } catch (InputMismatchException e53) {
+                System.out.println("Invalid input ! Enter a number.");
+                input.nextLine();
+            }
+        }
+        int index = -1;
+        for (int i = 0; i < roomNumbers.length; i++) {
+            if (roomNumbers[i] == RoomNum) {
+                index = i;
+                break;
+            }
+        }
+        if (index == -1) {
+            System.out.println("Invalid Room Number");
+            return;
+        }
+        System.out.println("==== ROOM STATUS ====");
+        System.out.println("Room Number: " + RoomNum);
+        System.out.println("Room status: " + roomStatus[index]);
+        System.out.println("Reserved By: " + (reservedByMemberID[index] == 0 ? "N/A" : reservedByMemberID[index]));
+
+    }
+
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
         System.out.println("             MAIN MENU");
