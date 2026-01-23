@@ -745,6 +745,79 @@ public class LMS {
         }
     }
 
+    public static void reserveRoom() {
+        System.out.println("\n---------------------------------------------");
+        System.out.println("             RESERVE A STUDY ROOM");
+        System.out.println("---------------------------------------------\n");
+
+        int searchRoom = 0;
+        int memberId = 0;
+        int index = -1;
+        while (true) {
+            try {
+                System.out.println("Enter room you want to reserve");
+                searchRoom = input.nextInt();
+                // checking the room number
+                boolean roomExists = false;
+                for (int r : roomNumbers) {
+                    if (r == searchRoom) {
+                        roomExists = true;
+                        break;
+                    }
+
+                }
+
+                if (!roomExists) {
+                    System.out.println("Invalid room number! Try Again");
+                    continue;
+                }
+
+                index = -1;
+                for (int i = 0; i < roomNumbers.length; i++) {
+                    if (roomNumbers[i] == searchRoom) {
+                        index = i;
+                        break;
+                    }
+                }
+                if (!roomStatus[index].equals("Available")) {
+
+                    System.out.println(
+                            "The room " + searchRoom + " is  already reserved  by member " + reservedByMemberID[index]);
+                    return;
+                }
+                break;
+            } catch (InputMismatchException e49) {
+                System.out.println("Invalid input! Enter a number");
+                input.nextLine();
+            }
+        }
+        while (true) {
+            try {
+
+                System.out.println("Enter member ID:");
+                memberId = input.nextInt();
+                int memberIndex = findMemberIndexByID(memberId);
+                if (memberIndex == -1) {
+                    System.out.println("Member doesnot exist");
+                    continue;
+                }
+                System.out.println("Member found!");
+                break;
+
+            } catch (InputMismatchException e50) {
+                System.out.println("Invalid input ! Enter a number for member ID");
+                input.nextLine();
+            }
+        } // end
+        roomStatus[index] = "Reserved";
+        reservedByMemberID[index] = memberId;
+
+        saveRoomData();
+        System.out.println("The room " + searchRoom + " is reserved successfully by member " + memberId);
+
+    }
+
+    
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
         System.out.println("             MAIN MENU");
