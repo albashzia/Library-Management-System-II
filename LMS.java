@@ -117,6 +117,15 @@ public class LMS {
         }
     }// loadMembersFromTheFile
 
+    public static void saveMembersToFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(MEMBERSDATAFILE))) {
+            for (int i = 0; i < memberIDs.size(); i++) {
+                writer.println(memberIDs.get(i) + "," + memberNames.get(i));
+            }
+        } catch (IOException e6) {
+            System.out.println("Critical Error: Could not save members to file." + e6.toString());
+        }
+    }
 
     public static int findBookIndexByID(int id) {
         for (int i = 0; i < bookIDs.size(); i++) {
