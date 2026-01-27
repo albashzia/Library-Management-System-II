@@ -219,25 +219,25 @@ public class LMS {
             }
             switch (choice) {
                 case 1:
-                    // addBook();
+                    addBook();
                     break;
                 case 2:
-                    // removeBook();
+                    removeBook();
                     break;
                 case 3:
-                    // searchBook();
+                    searchBook();
                     break;
                 case 4:
-                    // displayAvailableBooks();
+                    displayAvailableBooks();
                     break;
                 case 5:
-                    // issueBook();
+                    //issueBook();
                     break;
                 case 6:
-                    // returnBook();
+                    //returnBook();
                     break;
                 case 7:
-                    // showAllIssuedBooks();
+                    //showAllIssuedBooks();
                     break;
                 default:
                     System.out.println("Invalid Choice, please enter value from 1 - 8 ");
@@ -495,6 +495,97 @@ public class LMS {
         if (!any) {
             System.out.println("No books currently available.");
         }
+    }
+
+    public static void issueBook() {
+        System.out.println("\n---------------------------------------------");
+        System.out.println("                ISSUE BOOK");
+        System.out.println("---------------------------------------------");
+
+        try {
+            System.out.print("Enter Book ID to issue: ");
+            int bookId = 0;
+            while (true) {
+                try {
+                    bookId = input.nextInt();
+                    break;
+                } catch (InputMismatchException e23) {
+                    System.out.println("Invalid Book ID. Enter numbers only.");
+                    input.nextLine();
+                    System.out.print("Enter Book ID to issue: ");
+                }
+            }
+            System.out.print("Enter Member ID: ");
+            int memberId = 0;
+            while (true) {
+                try {
+                    memberId = input.nextInt();
+                    break;
+                } catch (InputMismatchException e24) {
+                    System.out.println("Invalid Member ID. Enter numbers only.");
+                    input.nextLine();
+                    System.out.print("Enter Member ID: ");
+                }
+            }
+            input.nextLine();
+            int bookIndex = findBookIndexByID(bookId);
+            int memberIndex = findMemberIndexByID(memberId);
+            if (bookIndex == -1 || memberIndex == -1) {
+                System.out.println("Book or Member ID not found.");
+                return;
+            }
+            try {
+                if (availableQuantities.get(bookIndex) <= 0) {
+                    System.out.println("All copies are issued.");
+                    return;
+                }
+            } catch (IndexOutOfBoundsException e25) {
+                System.out.println("Data error: Book index out of range.");
+                return;
+            }
+            try {
+                availableQuantities.set(bookIndex, availableQuantities.get(bookIndex) - 1);
+            } catch (Exception e26) {
+                System.out.println("Error updating book quantity.");
+                return;
+            }
+            issueBookIDs.add(bookId);
+            issueMemberIDs.add(memberId);
+            String date;
+
+            while (true) {
+                System.out.print("Enter today's Date (YYYY-MM-DD): ");
+
+                try {
+                    date = input.nextLine().trim();
+                } catch (Exception e27) {
+                    System.out.println("Error reading input. Try again:");
+                    input.nextLine(); // clear buffer
+                    continue;
+                }
+
+                // Very simple format check: length + hyphens
+                if (date.length() == 10
+                        && date.charAt(4) == '-'
+                        && date.charAt(7) == '-') {
+
+                    break;
+                }
+
+                System.out.println("Invalid format. Example: 2025-01-14");
+            }
+
+            issueDates.add(date);
+
+            try {
+                System.out.println(bookTitles.get(bookIndex) + "' issued to member " + memberId);
+            } catch (IndexOutOfBoundsException e28) {
+                System.out.println("Error retrieving book title for display.");
+            }
+        } catch (Exception e29) {
+            System.out.println("Unexpected error while issuing book: " + e29.getMessage());
+        }
+        saveDataToFiles();
     }
 
     public static void memberMenu() {
