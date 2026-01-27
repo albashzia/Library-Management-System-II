@@ -588,6 +588,88 @@ public class LMS {
         saveDataToFiles();
     }
 
+    public static void returnBook() {
+        System.out.println("\n---------------------------------------------");
+        System.out.println("                RETURN BOOK");
+        System.out.println("---------------------------------------------");
+
+        try {
+            int bookId = 0, memberId = 0;
+            while (true) {
+                try {
+                    System.out.print("Enter Book ID to return: ");
+                    bookId = input.nextInt();
+                    break;
+                } catch (InputMismatchException e30) {
+                    System.out.println("Invalid Book ID. Numbers only.");
+                    input.nextLine();
+                }
+            }
+            while (true) {
+                try {
+                    System.out.print("Enter Member ID: ");
+                    memberId = input.nextInt();
+                    break;
+                } catch (InputMismatchException e31) {
+                    System.out.println("Invalid Member ID. Numbers only.");
+                    input.nextLine();
+                }
+            }
+            input.nextLine();
+            int bookIndex = -1;
+            try {
+                bookIndex = findBookIndexByID(bookId);
+            } catch (Exception e32) {
+                System.out.println("Error while searching Book ID: " + e32.getMessage());
+                return;
+            }
+
+            if (bookIndex == -1) {
+                System.out.println("Book ID not found.");
+                return;
+            }
+            int issueIndex = -1;
+            try {
+                for (int i = 0; i < issueBookIDs.size(); i++) {
+                    if (issueBookIDs.get(i) == bookId && issueMemberIDs.get(i) == memberId) {
+                        issueIndex = i;
+                        break;
+                    }
+                }
+            } catch (Exception e33) {
+                System.out.println("Unexpected error while checking issued records: " + e33.getMessage());
+                return;
+            }
+
+            if (issueIndex == -1) {
+                System.out.println("This book was not issued to this member.");
+                return;
+            }
+            try {
+                issueBookIDs.remove(issueIndex);
+                issueMemberIDs.remove(issueIndex);
+                issueDates.remove(issueIndex);
+            } catch (Exception e34) {
+                System.out.println("Error removing issue records: " + e34.getMessage());
+                return;
+            }
+            try {
+                availableQuantities.set(bookIndex, availableQuantities.get(bookIndex) + 1);
+            } catch (Exception e35) {
+                System.out.println("Error updating available quantity: " + e35.getMessage());
+                return;
+            }
+            try {
+                System.out.println(bookTitles.get(bookIndex) + "' returned by member " + memberId);
+            } catch (Exception e36) {
+                System.out.println("Book returned, but error while displaying title.");
+            }
+        } catch (Exception e37) {
+            System.out.println("Unexpected error occurred: " + e37.getMessage());
+        }
+        saveDataToFiles();
+    }
+
     public static void memberMenu() {
         int choice;
         while (true) {
