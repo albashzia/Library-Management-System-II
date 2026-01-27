@@ -91,6 +91,33 @@ public class LMS {
         }
     }
 
+    public static void loadMembersFromFile() {
+        File file = new File(MEMBERSDATAFILE);
+        if (!file.exists()) {
+            return;
+        }
+
+        try {
+            Scanner scan = new Scanner(file);
+            while (scan.hasNextLine()) {
+                String line = scan.nextLine();
+                String[] parts = line.split(",");
+                try {
+                    int id = Integer.parseInt(parts[0].trim());
+                    String name = parts[1].trim();
+                    memberIDs.add(id);
+                    memberNames.add(name);
+                } catch (NumberFormatException e4) {
+                    System.out.println("Corrupt data found in file, skipping the line.");
+                }
+            } // while
+            //System.out.println("Member records loaded successfully from members.txt");
+        } catch (IOException e5) {
+            System.out.println("Critical Error: Could not read member file." + e5.toString());
+        }
+    }// loadMembersFromTheFile
+
+
     public static int findBookIndexByID(int id) {
         for (int i = 0; i < bookIDs.size(); i++) {
             if (bookIDs.get(i) == id) {
