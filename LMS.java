@@ -371,6 +371,23 @@ public class LMS {
         }
     }
 
+    public static void printBookDetails(int index) {
+
+        System.out.println("\n---------------------------------------------");
+        System.out.println("               BOOK DETAILS");
+        System.out.println("---------------------------------------------");
+
+        try {
+            System.out.println("Book ID : " + bookIDs.get(index));
+            System.out.println("Title : " + bookTitles.get(index));
+            System.out.println("Author : " + bookAuthors.get(index));
+            System.out.println("Total Quantity : " + totalQuantities.get(index));
+            System.out.println("Available Quantity : " + availableQuantities.get(index));
+        } catch (IndexOutOfBoundsException e39) {
+            System.out.println("Error: Tried to print invalid book entry.");
+        }
+    }
+
     /*
      * displayAvailableBooks()
      * Displays all books currently available for issuing.
