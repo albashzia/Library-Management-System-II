@@ -13,18 +13,18 @@ public class LMS {
     static ArrayList<Integer> issueMemberIDs = new ArrayList<>();
     static ArrayList<String> issueDates = new ArrayList<>();
     static ArrayList<String> memberNames = new ArrayList<>();
-    static String BOOKSDATAFILE = "books_data.txt";
-    static String ISSUEDBOOKSDATAFILE = "issued_data.txt";
-    static String MEMBERSDATAFILE = "members.txt";
-    static String ROOMSDATAFILE = "rooms.txt";
-    static int ROOMCOUNT = 5;
+    static String BOOKS_DATA_FILE = "books_data.txt";
+    static String ISSUED_BOOKS_DATA_FILE = "issued_data.txt";
+    static String MEMBERS_DATA_FILE = "members.txt";
+    static String ROOMS_DATA_FILE = "rooms.txt";
+    static int ROOM_COUNT = 5;
     static int[] roomNumbers = { 101, 102, 103, 104, 105 };
     static String[] roomStatus = { "Available", "Available", "Available", "Available", "Available" };
-    static int[] reservedByMemberID = new int[ROOMCOUNT];
+    static int[] reservedByMemberID = new int[ROOM_COUNT];
 
     public static void loadDataFromFiles() {
         try {
-            File f = new File(BOOKSDATAFILE);
+            File f = new File(BOOKS_DATA_FILE);
             if (f.exists()) {
                 Scanner sc = new Scanner(f);
                 while (sc.hasNextLine()) {
@@ -45,7 +45,7 @@ public class LMS {
         }
 
         try {
-            File f = new File(ISSUEDBOOKSDATAFILE);
+            File f = new File(ISSUED_BOOKS_DATA_FILE);
             if (f.exists()) {
                 Scanner sc = new Scanner(f);
                 while (sc.hasNextLine()) {
@@ -66,7 +66,7 @@ public class LMS {
 
     public static void saveDataToFiles() {
 
-        try (PrintWriter pw = new PrintWriter(new FileWriter(BOOKSDATAFILE))) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(BOOKS_DATA_FILE))) {
             for (int i = 0; i < bookIDs.size(); i++) {
                 pw.println(
                         bookIDs.get(i) + ","
@@ -79,7 +79,7 @@ public class LMS {
             System.out.println("Error saving books data.");
         }
 
-        try (PrintWriter pw = new PrintWriter(new FileWriter(ISSUEDBOOKSDATAFILE))) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(ISSUED_BOOKS_DATA_FILE))) {
             for (int i = 0; i < issueBookIDs.size(); i++) {
                 pw.println(
                         issueBookIDs.get(i) + ","
@@ -92,7 +92,7 @@ public class LMS {
     }
 
     public static void loadMembersFromFile() {
-        File file = new File(MEMBERSDATAFILE);
+        File file = new File(MEMBERS_DATA_FILE);
         if (!file.exists()) {
             return;
         }
@@ -118,7 +118,7 @@ public class LMS {
     }// loadMembersFromTheFile
 
     public static void saveMembersToFile() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(MEMBERSDATAFILE))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(MEMBERS_DATA_FILE))) {
             for (int i = 0; i < memberIDs.size(); i++) {
                 writer.println(memberIDs.get(i) + "," + memberNames.get(i));
             }
@@ -137,10 +137,10 @@ public class LMS {
     }
 
     public static void loadRoomData() {
-        File file = new File(ROOMSDATAFILE);
+        File file = new File(ROOMS_DATA_FILE);
         try {
             if (!file.exists()) {
-                for (int i = 0; i < ROOMCOUNT; i++) {
+                for (int i = 0; i < ROOM_COUNT; i++) {
                     roomStatus[i] = "Available";
                     reservedByMemberID[i] = 0;
                 }
@@ -149,7 +149,7 @@ public class LMS {
             Scanner fileReader = new Scanner(file);
             int i = 0;
 
-            while (fileReader.hasNextLine() && i < ROOMCOUNT) {
+            while (fileReader.hasNextLine() && i < ROOM_COUNT) {
                 roomStatus[i] = fileReader.nextLine().trim();
                 reservedByMemberID[i] = Integer.parseInt(fileReader.nextLine().trim());
                 i++;
@@ -163,8 +163,8 @@ public class LMS {
     public static void saveRoomData() {
         try {
 
-            PrintStream ps = new PrintStream(ROOMSDATAFILE);
-            for (int i = 0; i < ROOMCOUNT; i++) {
+            PrintStream ps = new PrintStream(ROOMS_DATA_FILE);
+            for (int i = 0; i < ROOM_COUNT; i++) {
                 ps.println(roomStatus[i]);
                 ps.println(reservedByMemberID[i]);
 
