@@ -136,6 +136,30 @@ public class LMS {
         return -1;
     }
 
+    public static void loadRoomData() {
+        File file = new File(ROOMSDATAFILE);
+        try {
+            if (!file.exists()) {
+                for (int i = 0; i < ROOMCOUNT; i++) {
+                    roomStatus[i] = "Available";
+                    reservedByMemberID[i] = 0;
+                }
+                return;
+            }
+            Scanner fileReader = new Scanner(file);
+            int i = 0;
+
+            while (fileReader.hasNextLine() && i < ROOMCOUNT) {
+                roomStatus[i] = fileReader.nextLine().trim();
+                reservedByMemberID[i] = Integer.parseInt(fileReader.nextLine().trim());
+                i++;
+            }
+            fileReader.close();
+        } catch (Exception e7) {
+            System.out.println("Error loading file data");
+        }
+    }
+
     public static int findMemberIndexByID(int id) {
         for (int i = 0; i < memberIDs.size(); i++) {
             if (memberIDs.get(i) == id) {
