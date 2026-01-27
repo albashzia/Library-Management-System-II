@@ -160,6 +160,21 @@ public class LMS {
         }
     }
 
+    public static void saveRoomData() {
+        try {
+
+            PrintStream ps = new PrintStream(ROOMSDATAFILE);
+            for (int i = 0; i < ROOMCOUNT; i++) {
+                ps.println(roomStatus[i]);
+                ps.println(reservedByMemberID[i]);
+
+            }
+            ps.close();
+        } catch (Exception e8) {
+            System.out.println("Error saving the file");
+        }
+    }
+
     public static int findMemberIndexByID(int id) {
         for (int i = 0; i < memberIDs.size(); i++) {
             if (memberIDs.get(i) == id) {
