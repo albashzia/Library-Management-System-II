@@ -64,6 +64,33 @@ public class LMS {
         }
     }
 
+    public static void saveDataToFiles() {
+
+        try (PrintWriter pw = new PrintWriter(new FileWriter(BOOKSDATAFILE))) {
+            for (int i = 0; i < bookIDs.size(); i++) {
+                pw.println(
+                        bookIDs.get(i) + ","
+                                + bookTitles.get(i) + ","
+                                + bookAuthors.get(i) + ","
+                                + totalQuantities.get(i) + ","
+                                + availableQuantities.get(i));
+            }
+        } catch (Exception e2) {
+            System.out.println("Error saving books data.");
+        }
+
+        try (PrintWriter pw = new PrintWriter(new FileWriter(ISSUEDBOOKSDATAFILE))) {
+            for (int i = 0; i < issueBookIDs.size(); i++) {
+                pw.println(
+                        issueBookIDs.get(i) + ","
+                                + issueMemberIDs.get(i) + ","
+                                + issueDates.get(i));
+            }
+        } catch (Exception e3) {
+            System.out.println("Error saving issued records.");
+        }
+    }
+
     public static int findBookIndexByID(int id) {
         for (int i = 0; i < bookIDs.size(); i++) {
             if (bookIDs.get(i) == id) {
