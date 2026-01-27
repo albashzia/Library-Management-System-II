@@ -109,6 +109,15 @@ public class LMS {
         return -1;
     }// find member by ID
 
+    public static boolean containsLetter(String s) {
+        for (char c : s.toCharArray()) {
+            if (Character.isLetter(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void bookMenu() {
         int choice = 0;
         do {
