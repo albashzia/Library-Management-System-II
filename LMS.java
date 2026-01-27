@@ -1127,7 +1127,7 @@ public class LMS {
                 memberId = input.nextInt();
                 int memberIndex = findMemberIndexByID(memberId);
                 if (memberIndex == -1) {
-                    System.out.println("Member doesnot exist");
+                    System.out.println("Member does not exist");
                     continue;
                 }
                 System.out.println("Member found!");
@@ -1190,7 +1190,7 @@ public class LMS {
                 memberId = input.nextInt();
                 int memberIndex = findMemberIndexByID(memberId);
                 if (memberIndex == -1) {
-                    System.out.println("Member doesnot exist");
+                    System.out.println("Member does not exist");
                     continue;
                 }
 
@@ -1234,7 +1234,7 @@ public class LMS {
                     }
                 }
                 if (!roomExists) {
-                    System.out.println("The room number doesnot exist");
+                    System.out.println("The room number does not exist");
                     continue;
                 }
                 break;
