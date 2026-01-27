@@ -231,13 +231,13 @@ public class LMS {
                     displayAvailableBooks();
                     break;
                 case 5:
-                    //issueBook();
+                    issueBook();
                     break;
                 case 6:
-                    //returnBook();
+                    returnBook();
                     break;
                 case 7:
-                    //showAllIssuedBooks();
+                    showAllIssuedBooks();
                     break;
                 default:
                     System.out.println("Invalid Choice, please enter value from 1 - 8 ");
@@ -668,6 +668,32 @@ public class LMS {
             System.out.println("Unexpected error occurred: " + e37.getMessage());
         }
         saveDataToFiles();
+    }
+
+    public static void showAllIssuedBooks() {
+
+        System.out.println("\n=============================================");
+        System.out.println("             ALL ISSUED BOOKS");
+        System.out.println("=============================================");
+
+        if (issueBookIDs.isEmpty()) {
+            System.out.println("No books are issued.");
+            return;
+        }
+        System.out.printf("%-10s | %-15s | %-30s | %-15s%n", "Issue #", "Member ID", "Book Title", "Date");
+        System.out.println("--------------------------------------------------------------------");
+        for (int i = 0; i < issueBookIDs.size(); i++) {
+            int bookIndex = findBookIndexByID(issueBookIDs.get(i));
+            String title;
+            try {
+                title = bookTitles.get(bookIndex);
+            } catch (Exception e38) {
+                title = "Unknown (Data error)";
+            }
+
+            System.out.printf("%-10d | %-15d | %-30s | %-15s%n", i + 1, issueMemberIDs.get(i), title,
+                    issueDates.get(i));
+        }
     }
 
     public static void memberMenu() {
