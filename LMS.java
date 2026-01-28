@@ -678,6 +678,12 @@ public class LMS {
         saveDataToFiles();
     }
 
+    /*
+     * showAllIssuedBooks()
+     * Displays all issued books with:
+     * Issue number, Member ID, Book Title, and Date of issue.
+     * Handles exceptions if book data is missing or corrupt.
+     */
     public static void showAllIssuedBooks() {
 
         System.out.println("\n=============================================");
