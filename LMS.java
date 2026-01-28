@@ -446,6 +446,12 @@ public class LMS {
         }
     }
 
+    /*
+     * printBookDetails(int index)
+     * Prints full details of a book at the given index:
+     * ID, Title, Author, Total Quantity, Available Quantity.
+     * Handles exceptions if index is invalid.
+     */
     public static void printBookDetails(int index) {
 
         System.out.println("\n---------------------------------------------");
