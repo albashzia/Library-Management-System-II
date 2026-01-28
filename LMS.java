@@ -497,6 +497,14 @@ public class LMS {
         }
     }
 
+    /*
+     * issueBook()
+     * Issues a book to a member.
+     * Prompts for Book ID, Member ID, and issue date.
+     * Validates input and checks book availability.
+     * Updates available quantity and adds to issue records.
+     * Handles exceptions at every stage.
+     */
     public static void issueBook() {
         System.out.println("\n---------------------------------------------");
         System.out.println("                ISSUE BOOK");
