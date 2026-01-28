@@ -1261,6 +1261,10 @@ public class LMS {
 
     }
 
+    /*
+     * displayMainMenu()
+     * Displays the main menu of the system, listing the main modules.
+     */
     public static void displayMainMenu() {
         System.out.println("\n=============================================");
         System.out.println("             MAIN MENU");
