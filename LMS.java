@@ -1306,7 +1306,7 @@ public class LMS {
                     memberMenu();
                     break;
                 case 3:
-                    // roomMenu();
+                    roomMenu();
                     break;
                 case 4:
                     System.out.println("Exiting System...");
