@@ -325,7 +325,7 @@ public class LMS {
             totalQuantities.add(total);
             availableQuantities.add(total);
             System.out.println("Book '" + title + "' added successfully.");
-            // saveDataToFiles();
+            saveDataToFiles();
         } catch (Exception e16) {
             System.out.println("Unexpected error occurred while adding the book: " + e16.getMessage());
         }
