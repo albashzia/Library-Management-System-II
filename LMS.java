@@ -741,19 +741,19 @@ public class LMS {
             try {
                 switch (choice) {
                     case 1:
-                        // registerNewMember();
+                        registerNewMember();
                         break;
                     case 2:
-                        // displayAllMembers();
+                        displayAllMembers();
                         break;
                     case 3:
-                        // searchMember();
+                        searchMember();
                         break;
                     case 4:
-                        // viewBooksIssuedByMember();
+                        viewBooksIssuedByMember();
                         break;
                     case 5:
-                        // removeMember();
+                        removeMember();
                         break;
                     case 6:
                         System.out.println("Returning to main menu..");
