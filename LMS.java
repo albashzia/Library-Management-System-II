@@ -602,6 +602,14 @@ public class LMS {
         saveDataToFiles();
     }
 
+    /*
+     * returnBook()
+     * Returns a previously issued book.
+     * Prompts for Book ID and Member ID.
+     * Validates if the book was issued to the member.
+     * Updates available quantities and removes issue record.
+     * Handles exceptions during processing.
+     */
     public static void returnBook() {
         System.out.println("\n---------------------------------------------");
         System.out.println("                RETURN BOOK");
@@ -1296,6 +1304,10 @@ public class LMS {
         System.out.print("Enter your choice: ");
     }
 
+    /*
+     * processMainMenuChoice(int choice)
+     * Processes the user's selection from the main menu.
+     */
     public static void processMainMenuChoice(int choice) {
         try {
             switch (choice) {
