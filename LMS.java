@@ -1058,16 +1058,16 @@ public class LMS {
             }
             switch (choice) {
                 case 1:
-                    // showRoom();
+                    showRoom();
                     break;
                 case 2:
-                    // reserveRoom();
+                    reserveRoom();
                     break;
                 case 3:
-                    // cancelReservation();
+                    cancelReservation();
                     break;
                 case 4:
-                    // checkReservationStatus();
+                    checkReservationStatus();
                     break;
                 case 5:
                     System.out.println("Exiting Study Room Booking System...");
