@@ -1327,7 +1327,8 @@ public class LMS {
      */
     public static void main(String args[]) {
         loadDataFromFiles();
-        displayMainMenu();
+        loadMembersFromFile();
+        loadRoomData();
         int choice = 0;
         do {
             displayMainMenu();
