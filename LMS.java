@@ -1038,6 +1038,7 @@ public class LMS {
         } // while
     }// remove member
 
+    // room management methods
     public static void roomMenu() {
         int choice = 0;
         do {
