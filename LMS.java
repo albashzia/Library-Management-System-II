@@ -194,6 +194,7 @@ public class LMS {
         return false;
     }
 
+    //book related methods
     public static void bookMenu() {
         int choice = 0;
         do {
