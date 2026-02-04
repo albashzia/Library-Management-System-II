@@ -726,6 +726,7 @@ public class LMS {
         }
     }
 
+    //member methods
     public static void memberMenu() {
         int choice;
         while (true) {
