@@ -22,6 +22,7 @@ public class LMS {
     static String[] roomStatus = { "Available", "Available", "Available", "Available", "Available" };
     static int[] reservedByMemberID = new int[ROOM_COUNT];
 
+    // utility methods to help with different functions
     public static void loadDataFromFiles() {
         try {
             File f = new File(BOOKS_DATA_FILE);
