@@ -806,6 +806,15 @@ public class LMS {
         } // while
     }// memberMenu
 
+    /*
+     * registerNewMember()
+     * Registers a new library member by:
+     * - Validating a unique 4-digit numeric member ID
+     * - Accepting and validating the member's name
+     * - Adding the member data to in-memory lists
+     * - Persisting member data to file storage
+     * Handles invalid input, duplicate IDs, and allows cancellation.
+     */
     public static void registerNewMember() {
         System.out.println("\n---------------------------------------------");
         System.out.println("           REGISTER NEW MEMBER");
@@ -856,6 +865,14 @@ public class LMS {
         saveMembersToFile();
     }// registerNewMember
 
+    /*
+     * searchMember()
+     * Searches for an existing member by:
+     * - Member ID
+     * - Member Name (case-insensitive)
+     * Provides options to cancel the search.
+     * Displays member details if found and handles invalid input gracefully.
+     */
     public static void searchMember() {
         System.out.println("\n---------------------------------------------");
         System.out.println("               SEARCH MEMBER");
@@ -918,6 +935,14 @@ public class LMS {
         } // while
     }// searchMember
 
+    /*
+     * displayAllMembers()
+     * Displays all registered members in a formatted table showing:
+     * - Member ID
+     * - Member Name
+     * Handles empty member list and runtime exceptions during display.
+     * Allows retry in case of display failure.
+     */
     public static void displayAllMembers() {
         System.out.println("--Displaying All Members--");
         if (memberIDs.isEmpty()) {
