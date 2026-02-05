@@ -128,15 +128,6 @@ public class LMS {
         }
     }
 
-    public static int findBookIndexByID(int id) {
-        for (int i = 0; i < bookIDs.size(); i++) {
-            if (bookIDs.get(i) == id) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
     public static void loadRoomData() {
         File file = new File(ROOMS_DATA_FILE);
         try {
@@ -176,15 +167,50 @@ public class LMS {
         }
     }
 
+    /**
+     * ===========================
+     * Utility Methods Section
+     * ===========================
+     * */
+
+    /**
+     * Searches for a book ID inside the bookIDs list.
+     * Logic:
+     * - Iterates through the bookIDs list
+     * - Compares each stored ID with the given ID
+     * - Returns the index immediately when a match is found
+     * - Returns -1 if the ID does not exist in the list
+     */
+    public static int findBookIndexByID(int id) {
+        for (int i = 0; i < bookIDs.size(); i++) {
+            if (bookIDs.get(i) == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Searches for a member ID inside the memberIDs list.
+     * Purpose:
+     * - Used to quickly locate a member's position in the data structure
+     * - Prevents duplicate code wherever member lookup is required
+     */
     public static int findMemberIndexByID(int id) {
         for (int i = 0; i < memberIDs.size(); i++) {
             if (memberIDs.get(i) == id) {
                 return i;
             }
-        } // for
+        }
         return -1;
-    }// find member by ID
+    }
 
+    /**
+     * Checks whether a given string contains at least one alphabetic character.
+     * Use case:
+     * - Input validation
+     * - Ensuring numeric-only fields do not contain letters
+     */
     public static boolean containsLetter(String s) {
         for (char c : s.toCharArray()) {
             if (Character.isLetter(c)) {
