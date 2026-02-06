@@ -981,6 +981,19 @@ public class LMS {
         }
     }// displayAll
 
+
+    /*
+     * viewBooksIssuedByMember()
+     * Displays all books issued to a specific member by:
+     * - Validating the member ID
+     * - Retrieving issued book IDs linked to the member
+     * - Displaying Book ID, Book Title, and Issue Date
+     * Handles cases where:
+     * - Member ID does not exist
+     * - Member has no issued books
+     * - Book data is missing or inconsistent
+     * Allows user to cancel the operation.
+     */
     public static void viewBooksIssuedByMember() {
         System.out.println("\n---------------------------------------------");
         System.out.println("        BOOKS ISSUED TO A MEMBER");
@@ -1040,6 +1053,15 @@ public class LMS {
         } // while
     }// BooksIssuedToMember
 
+    /*
+     * removeMember()
+     * Removes a registered member from the system by:
+     * - Validating the member ID
+     * - Ensuring the member has no outstanding issued books
+     * - Deleting member details from in-memory records
+     * Prevents removal if the member has unreturned books.
+     * Handles invalid input and allows cancellation.
+     */
     public static void removeMember() {
         System.out.println("\n---------------------------------------------");
         System.out.println("               REMOVE MEMBER");
