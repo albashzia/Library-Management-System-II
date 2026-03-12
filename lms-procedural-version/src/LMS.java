@@ -18,8 +18,8 @@ public class LMS {
     static String MEMBERS_DATA_FILE = "members.txt";
     static String ROOMS_DATA_FILE = "rooms.txt";
     static int ROOM_COUNT = 5;
-    static int[] roomNumbers = { 101, 102, 103, 104, 105 };
-    static String[] roomStatus = { "Available", "Available", "Available", "Available", "Available" };
+    static int[] roomNumbers = {101, 102, 103, 104, 105};
+    static String[] roomStatus = {"Available", "Available", "Available", "Available", "Available"};
     static int[] reservedByMemberID = new int[ROOM_COUNT];
 
     // utility methods to help with different functions
