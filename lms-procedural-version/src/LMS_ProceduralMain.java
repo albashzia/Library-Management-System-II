@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class LMS {
+public class LMS_ProceduralMain {
     static Scanner input = new Scanner(System.in);
     static ArrayList<Integer> bookIDs = new ArrayList<>();
     static ArrayList<String> bookTitles = new ArrayList<>();
